@@ -1,33 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>RapGenius</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>RapGenius</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render 'layouts/errors' %>
+    <%= render 'layouts/userauth' %>
   
-  <% if flash[:errors] %>
-  <ul style="color:red;text-shadow: 1px 1px 1px black;">
-    <% flash[:errors].each do |error| %>
-    <li><%= error %></li>
-    <% end %>
-  </ul>
-  <br>
-  <% end %>
-
-  <% if signed_in? %>
-  <ul>
-    <li>Signed in as: <%= current_user.username %></li>
-    <li><%= button_to "Sign Out", session_url, :method => :delete %></li>
-  </ul>
-  <% else %>
-  <%= link_to "Sign In", new_session_url %> or
-  <%= link_to "Sign up", new_user_url %>
-  <% end %>
-
-<%= yield %>
-
-</body>
+    <%= yield %>
+  </body>
 </html>

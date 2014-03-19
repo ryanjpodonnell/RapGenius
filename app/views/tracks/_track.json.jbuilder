@@ -1,0 +1,1 @@
+json.(track, :id, :creator_id, :artist_id, :album_id, :track_num, :title, :lyrics, :datetime, :soundcloud_url, :spotify_url, :youtube_url, :created_at, :updated_at)
