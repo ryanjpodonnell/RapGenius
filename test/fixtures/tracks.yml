@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: tracks
+#
+#  id             :integer          not null, primary key
+#  creator_id     :integer          not null
+#  artist_id      :integer          not null
+#  album_id       :integer          not null
+#  track_num      :integer          not null
+#  title          :string(255)      not null
+#  lyrics         :text             not null
+#  soundcloud_url :string(255)
+#  spotify_url    :string(255)
+#  youtube_url    :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+#  column: value
