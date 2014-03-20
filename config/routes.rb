@@ -3,7 +3,7 @@ RapGenius::Application.routes.draw do
   resource :session, :only => [:create, :destroy, :new]
   
   namespace :api, :defaults => { :format => :json } do
-    resources :artists, :only => [:create] do
+    resources :artists, :only => [:create, :destroy] do
       resources :albums, :only => [:create] do
         resources :tracks, :only => [:create]
       end

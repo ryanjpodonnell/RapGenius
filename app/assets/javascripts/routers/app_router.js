@@ -6,7 +6,8 @@ RapGenius.Routers.AppRouter = Backbone.Router.extend({
   
   routes: {
     '': 'tracksIndex',
-    'artists/new': 'artistsNew'
+    'artists/new': 'artistsNew',
+    'artists/:id': 'artistsShow'
   },
   
   artistsNew: function() {
@@ -18,6 +19,10 @@ RapGenius.Routers.AppRouter = Backbone.Router.extend({
       this._swapView(newView);
     }
   },
+  
+  artistsShow: function(id) {
+    
+  }
   
   tracksIndex: function() {
     var indexView = new RapGenius.Views.TracksIndex({

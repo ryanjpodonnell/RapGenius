@@ -9,6 +9,14 @@ class Api::ArtistsController < ApplicationController
     end
   end
   
+  def destroy
+    @artist = Artist.find(params[:id])
+    
+    if @artist.destroy
+      render "artists/show"
+    end
+  end
+  
   def index
     @artists = Artist.all
     render "artists/index"
