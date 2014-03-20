@@ -16,8 +16,8 @@ RapGenius.Views.ArtistsNew = Backbone.View.extend({
     event.preventDefault();
     var params = $(event.currentTarget).serializeJSON()["artist"];
     var newArtist = new RapGenius.Models.Artist(params);
-    newArtist.set({iq: 0});
     debugger
+    newArtist.set({iq: 0});
     newArtist.save({}, {
       success: function () {
         RapGenius.Collections.artists.add(newArtist);

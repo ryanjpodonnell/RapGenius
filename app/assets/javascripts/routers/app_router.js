@@ -21,8 +21,14 @@ RapGenius.Routers.AppRouter = Backbone.Router.extend({
   },
   
   artistsShow: function(id) {
+    var artist = RapGenius.Collections.artists.getOrFetch(id);
+
+    var showView = new RapGenius.Views.ArtistsShow({
+      model: artist
+    });
     
-  }
+    this._swapView(showView);
+  },
   
   tracksIndex: function() {
     var indexView = new RapGenius.Views.TracksIndex({

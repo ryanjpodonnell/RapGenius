@@ -21,4 +21,9 @@ class Api::ArtistsController < ApplicationController
     @artists = Artist.all
     render "artists/index"
   end
+  
+  def show
+    @artist = Artist.find(params[:id])
+    render "artists/show"
+  end
 end

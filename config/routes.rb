@@ -9,7 +9,7 @@ RapGenius::Application.routes.draw do
       end
     end
     
-    resources :artists, :only => [:index]
+    resources :artists, :only => [:index, :show]
     resources :albums, :only => [:index]
     resources :tracks, :only => [:index]
   end
