@@ -9,7 +9,7 @@ window.RapGenius = {
 
     tracks.fetch({
       success: function () {
-        new RapGenius.Routers.TracksRouter(tracks, $rootEl);
+        new RapGenius.Routers.AppRouter(tracks, $rootEl);
         Backbone.history.start();
       },
       error: function () {
@@ -18,7 +18,3 @@ window.RapGenius = {
     });
   }
 };
-
-$(document).ready(function(){
-  RapGenius.initialize();
-});

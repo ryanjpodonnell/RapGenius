@@ -1,0 +1,1 @@
+json.(artist, :id, :artistname, :iq, :about, :created_at, :updated_at)

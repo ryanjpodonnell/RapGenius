@@ -1,15 +1,25 @@
-RapGenius.Routers.TracksRouter = Backbone.Router.extend({
+RapGenius.Routers.AppRouter = Backbone.Router.extend({
   initialize: function(tracks, $rootEl) {
     this.tracks = tracks;
     this.$rootEl = $rootEl;
   },
   
   routes: {
-    '': 'index'
+    '': 'tracksIndex',
+    'artists/new': 'artistsNew'
   },
   
-  index: function() {
-    console.log('index router')
+  artistsNew: function() {
+    if (!RapGenius.user_id) {
+      Backbone.history.navigate('', { trigger: true });
+    }
+    else {
+      var newView = new RapGenius.Views.ArtistsNew()
+      this._swapView(newView);
+    }
+  },
+  
+  tracksIndex: function() {
     var indexView = new RapGenius.Views.TracksIndex({
       collection: this.tracks
     });

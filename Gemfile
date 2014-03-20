@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'annotate'
 gem 'bcrypt'
 gem 'backbone-on-rails'
+gem 'protected_attributes'
 
 group :doc do
   gem 'sdoc', require: false

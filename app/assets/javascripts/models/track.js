@@ -1,1 +1,2 @@
-RapGenius.Models.Track = Backbone.Model.extend({});
+RapGenius.Models.Track = Backbone.Model.extend({
+});

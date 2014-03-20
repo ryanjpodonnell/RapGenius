@@ -1,1 +1,10 @@
 <div id="content"></div>
+
+<script>
+
+$(document).ready(function(){
+  RapGenius.user_id = <%= signed_in? ? current_user.id : nil %>
+  RapGenius.initialize();
+});
+
+</script>
