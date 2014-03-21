@@ -1,3 +1,30 @@
-<h1><%= artist.get("artistname") %></h1>
-<img src="<%= artist.get("image_url") %>"></img>
-<p><%= artist.get("about") %></p>
+<div class="row">
+  <div class="col-xs-4">
+    <div id="name_and_message">
+      <h1><%= artist.get("artistname") %></h1>
+    </div>
+    
+    
+    <div id="avatar">
+      <img class="avatar_large" src="<%= artist.get("image_url") %>"></img>
+    </div>
+    
+    <div id="about_me" class="sidebar_unit">
+      <div id="label">
+        <% if (artist.get("artistname")) { %>
+          ABOUT <%= artist.get("artistname").toUpperCase() %>
+        <% } %>
+        
+      </div>
+      <%= artist.get("about") %>
+    </div>
+  </div>
+  <div class"col-xs-8" id="temp">
+    
+    <a href="<%= '#/artists/' + artist.get('id') + '/albums/new/' %>">New Album</a>
+    
+    <p>
+      Shabby chic nesciunt vegan synth, fanny pack disrupt hoodie artisan magna chillwave veniam pariatur leggings. Nesciunt tempor ugh, raw denim quis Portland twee vinyl jean shorts Tumblr meh bitters nihil you probably haven't heard of them sapiente. IPhone lo-fi Echo Park laboris Carles squid, meggings nihil consectetur Schlitz master cleanse cardigan pork belly photo booth small batch. Lomo Vice you probably haven't heard of them Marfa, officia aesthetic tattooed. Freegan mollit raw denim, DIY meh pug ennui small batch aliquip excepteur church-key forage photo booth. Aliquip et Bushwick polaroid typewriter, mlkshk minim pug direct trade pop-up leggings fanny pack ugh hashtag. Helvetica chia gluten-free delectus Cosby sweater.
+    </p>
+  </div>
+</div>

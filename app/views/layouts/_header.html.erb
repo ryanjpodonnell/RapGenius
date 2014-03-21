@@ -1,0 +1,33 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="glyphicon glyphicon-glass"></span>
+      </button>
+        <%= link_to "Rap Genius", root_url, class: "navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Tracks", '#/' %></li>
+        <li><%= link_to "Artists", '#/artists' %></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if signed_in? %>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <%= current_user.username %> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Sign Out", session_url, :method => :delete %></li>
+          </ul>
+          </li>
+        <% else %>
+          <button class="btn btn-primary header-button" data-toggle="modal" data-target="#modal-window">Sign In</button>
+          <button class="btn btn-primary header-button" data-toggle="modal" data-target="#modal-window2">Sign Up</button>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+

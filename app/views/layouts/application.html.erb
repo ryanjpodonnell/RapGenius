@@ -7,9 +7,13 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render 'layouts/errors' %>
-    <%= render 'layouts/userauth' %>
+    <div class="container">
+      <%= render 'layouts/header' %>
+      <%= render 'layouts/errors' %>
+      <%= render 'sessions/form' %>
+      <%= render 'users/form' %>
   
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>

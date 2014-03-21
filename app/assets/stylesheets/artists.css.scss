@@ -1,3 +1,43 @@
 // Place all the styles related to the artists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+img.avatar_large {
+  border:3px solid #79cc36;
+  max-width: 100%;
+}
+
+#name_and_message {
+  border-bottom: 2px solid #79cc36;
+}
+
+#avatar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.sidebar_unit {
+  background-color: #111;
+  border: 1px solid #333;
+}
+
+#label {
+  background-color: #1c1c1c;
+  color: #666;
+}
+
+.badge_container {
+  border-top: 1px solid #192b0b;
+  float: left;
+  margin-top: 10px;
+}
+
+.badge_container .avatar {
+  height: 45px;
+  width: 45px;
+  border: 1px solid #79cc36;
+}
+
+.badge_container .artist_name {
+  border-bottom: 1px dotted #497c20;
+}

@@ -1,0 +1,60 @@
+<% var artistNum = 0 %>
+<% while (artists.length - artistNum >= 3) { %>
+  <div class="row">
+    <% for (var i = 0; i < 3; i++) { %>
+      
+    <a class="col-xs-4 badge_container" 
+      href="<%= '#/artists/' + artists.models[artistNum + i].get('id') %>">
+      
+      <img class="avatar" 
+        src="<%= artists.models[artistNum + i].get('image_url') %>">
+      <img>
+      
+      <div class="artist_name">          
+        <%= artists.models[artistNum + i].get('artistname') %>
+      </div>
+    </a>
+    
+    <% } %>
+  </div>
+   
+  <% artistNum += 3 %>
+<% } %>  
+
+<% if (artists.length - artistNum == 2) { %>
+  <div class="row">
+    <% for (var i = 0; i < 2; i++) { %>
+      
+    <a class="col-xs-4 badge_container" 
+      href="<%= '#/artists/' + artists.models[artistNum + i].get('id') %>">
+      
+      <img class="avatar" 
+        src="<%= artists.models[artistNum + i].get('image_url') %>">
+      <img>
+      
+      <div class="artist_name">          
+        <%= artists.models[artistNum + i].get('artistname') %>
+      </div>
+    </a>
+    
+    <% } %>
+  </div>
+<% } %>
+
+<% if (artists.length - artistNum == 1) { %>
+  <div class="row">
+      
+    <a class="col-xs-4 badge_container" 
+      href="<%= '#/artists/' + artists.models[artistNum].get('id') %>">
+      
+      <img class="avatar" 
+        src="<%= artists.models[artistNum].get('image_url') %>">
+      <img>
+      
+      <div class="artist_name">          
+        <%= artists.models[artistNum].get('artistname') %>
+      </div>
+    </a>
+    
+  </div>
+<% } %>  
