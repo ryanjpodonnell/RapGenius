@@ -1,5 +1,5 @@
-RapGenius.Views.ArtistsShow = Backbone.View.extend({
-  template: JST['artists/show'],
+RapGenius.Views.TracksShow = Backbone.View.extend({
+  template: JST['tracks/show'],
   
   initialize: function() {
     this.listenTo(this.model, "sync", this.render);
@@ -7,8 +7,8 @@ RapGenius.Views.ArtistsShow = Backbone.View.extend({
   
   render: function() {
     var renderedContent = this.template({
-      artist: this.model,
-      tracks: this.collection
+      track: this.model,
+      artist: this.model.get('artist')
     });
 
     this.$el.html(renderedContent);

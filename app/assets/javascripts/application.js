@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.serializeJSON
+//= require typeahead
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap

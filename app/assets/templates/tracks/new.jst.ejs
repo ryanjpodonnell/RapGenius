@@ -1,0 +1,27 @@
+<h1>Add a New Song</h1>
+
+<form role="form" class="form-horizontal" autocomplete="off">
+  <div class="form-group col-xs-7">
+    <label>Primary Artist
+      <input type="text" name="artistname" id="artist_name"                           data-provide="typeahead" class="typeahead form-control">
+    </label>
+    <label>Title
+      <input type="text" name="track[title]" class="form-control">
+    </label>
+    <label>SoundCloud URL
+      <input type="text" name="track[soundcloud_url]" class="form-control">
+    </label>
+    <label>Youtube URL
+      <input type="text" name="track[youtube_url]" class="form-control">
+    </label>
+    <label>Spotify URL
+      <input type="text" name="track[spotify_url]" class="form-control">
+    </label>
+  </div>
+  <div class="form-group col-xs-12">
+    <label>Lyrics
+      <textarea class="form-control" name="track[lyrics]" rows="60"></textarea>
+    </label>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </div>
+</form>

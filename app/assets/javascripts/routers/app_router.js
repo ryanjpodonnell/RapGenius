@@ -8,7 +8,9 @@ RapGenius.Routers.AppRouter = Backbone.Router.extend({
     '': 'tracksIndex',
     'artists': 'artistsIndex',
     'artists/new': 'artistsNew',
-    'artists/:id': 'artistsShow'
+    'artists/:id': 'artistsShow',
+    'tracks/new': 'tracksNew',
+    'tracks/:id': 'tracksShow'
   },
   
   artistsIndex: function() {
@@ -28,18 +30,35 @@ RapGenius.Routers.AppRouter = Backbone.Router.extend({
     var artist = RapGenius.Collections.artists.getOrFetch(id);
 
     var showView = new RapGenius.Views.ArtistsShow({
-      model: artist
+      model: artist,
+      collection: this.tracks.where({artist_id: +id})
     });
     
     this._swapView(showView);
   },
   
   tracksIndex: function() {
-    console.log("tracksindex");
     var indexView = new RapGenius.Views.TracksIndex({
       collection: this.tracks
     });
     this._swapView(indexView);
+  },
+  
+  tracksNew: function() {
+    var newView = new RapGenius.Views.TracksNew({
+      artists: RapGenius.Collections.artists
+    })
+    RapGenius.Collections.artists.fetch();
+    this._swapView(newView);
+  },
+  
+  tracksShow: function(id) {
+    var track = RapGenius.Collections.tracks.getOrFetch(id);
+    var showView = new RapGenius.Views.TracksShow({
+      model: track
+    });
+    
+    this._swapView(showView);
   },
   
   _swapView: function(view) {

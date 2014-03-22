@@ -1,60 +1,38 @@
 <% var artistNum = 0 %>
-<% while (artists.length - artistNum >= 3) { %>
+<% var colCount = 0 %>
+<% while (artistNum < artists.length) { %>
   <div class="row">
-    <% for (var i = 0; i < 3; i++) { %>
+    <% if (artists.length - artistNum >= 3) { %>
+      <% colCount = 3 %>
+    <% } else { %>
+      <% colCount = artists.length - artistNum %>
+    <% } %>
+    <% for (var i = 0; i < colCount; i++) { %>
+        
       
     <a class="col-xs-4 badge_container" 
       href="<%= '#/artists/' + artists.models[artistNum + i].get('id') %>">
-      
-      <img class="avatar" 
-        src="<%= artists.models[artistNum + i].get('image_url') %>">
-      <img>
-      
-      <div class="artist_name">          
-        <%= artists.models[artistNum + i].get('artistname') %>
+      <div class="col-xs-3">
+        <img class="avatar" 
+          src="<%= artists.models[artistNum + i].get('image_url') %>">
+        <img>
+      </div>
+      <div class="col-xs-9">
+        <div class="row">
+          <div class="artist_name">          
+            <%= artists.models[artistNum + i].get('artistname') %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="artist_name">          
+            <%= artists.models[artistNum + i].get('iq') %>
+          </div>
+        </div>
       </div>
     </a>
     
     <% } %>
   </div>
    
-  <% artistNum += 3 %>
-<% } %>  
-
-<% if (artists.length - artistNum == 2) { %>
-  <div class="row">
-    <% for (var i = 0; i < 2; i++) { %>
-      
-    <a class="col-xs-4 badge_container" 
-      href="<%= '#/artists/' + artists.models[artistNum + i].get('id') %>">
-      
-      <img class="avatar" 
-        src="<%= artists.models[artistNum + i].get('image_url') %>">
-      <img>
-      
-      <div class="artist_name">          
-        <%= artists.models[artistNum + i].get('artistname') %>
-      </div>
-    </a>
-    
-    <% } %>
-  </div>
-<% } %>
-
-<% if (artists.length - artistNum == 1) { %>
-  <div class="row">
-      
-    <a class="col-xs-4 badge_container" 
-      href="<%= '#/artists/' + artists.models[artistNum].get('id') %>">
-      
-      <img class="avatar" 
-        src="<%= artists.models[artistNum].get('image_url') %>">
-      <img>
-      
-      <div class="artist_name">          
-        <%= artists.models[artistNum].get('artistname') %>
-      </div>
-    </a>
-    
-  </div>
+  <% artistNum += colCount %>
 <% } %>  

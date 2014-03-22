@@ -1,3 +1,14 @@
 <h1>TRACK INDEX</h1>
 
 <a href="#/artists/new">New Artist</a>
+<a href="#/tracks/new">New Track</a>
+<br>
+
+<ul>
+  <% for (var i = 0; i < tracks.length; i++) { %>
+    <li>
+      <a href="<%= '#/tracks/' + tracks.models[i].id %>">
+      <%= tracks.models[i].attributes.title %>
+    </li>
+  <% } %>
+</ul>

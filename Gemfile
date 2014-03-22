@@ -12,6 +12,7 @@ gem 'annotate'
 gem 'bcrypt'
 gem 'backbone-on-rails'
 gem 'protected_attributes'
+gem 'jquery-ui-rails'
 
 group :doc do
   gem 'sdoc', require: false

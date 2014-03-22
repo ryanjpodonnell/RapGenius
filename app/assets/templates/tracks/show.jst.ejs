@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-xs-4">
+    
+    <div id="name_and_message">
+      <h1><%= track.get("title") %></h1>
+    </div>
+    
+    <% if (artist) { %>
+    <a class="badge_container" 
+      href="<%= '#/artists/' + artist.id %>">
+      <div class="col-xs-3">
+        <img class="avatar" 
+          src="<%= artist.image_url %>">
+        <img>
+      </div>
+      <div class="col-xs-9">
+        <div class="row">
+          <div class="artist_name">          
+            <%= artist.artistname %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="artist_name">          
+            <%= artist.iq %>
+          </div>
+        </div>
+      </div>
+    </a>
+    <% } %>
+    
+  </div>
+  
+  <div class="col-xs-7 col-xs-offset-1" id="lyrics"><%= track.get("lyrics") %>
+  </div>
+</div>

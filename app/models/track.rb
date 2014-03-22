@@ -17,6 +17,9 @@
 #
 
 class Track < ActiveRecord::Base
+  attr_accessible :creator_id, :artist_id, :album_id, :track_num, :title,
+                  :lyrics, :soundcloud_url, :spotify_url, :youtube_url
+  
   belongs_to(
     :album,
     :primary_key => :id,

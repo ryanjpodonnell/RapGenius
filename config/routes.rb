@@ -3,15 +3,8 @@ RapGenius::Application.routes.draw do
   resource :session, :only => [:create, :destroy, :new]
   
   namespace :api, :defaults => { :format => :json } do
-    resources :artists, :only => [:create, :destroy] do
-      resources :albums, :only => [:create] do
-        resources :tracks, :only => [:create]
-      end
-    end
-    
-    resources :artists, :only => [:index, :show]
-    resources :albums, :only => [:index]
-    resources :tracks, :only => [:index]
+    resources :artists, :only => [:create, :destroy, :index, :show]
+    resources :tracks, :only => [:create, :destroy, :index, :show]
   end
   
   root to: "api/tracks#index"

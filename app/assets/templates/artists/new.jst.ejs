@@ -1,14 +1,14 @@
-<form>
-  <label>Artist Name
-    <input type="text" name="artist[artistname]" id="artist_name">
-  </label>
-  <br>
-  <label>Image URL
-    <input type="text" name="artist[image_url]" id="artist_name">
-  </label>
-  <br>
-  <label>About
-    <textarea name="artist[about]" rows="8" cols="40"></textarea>
-  </label>
-  <input type="submit">
+<form role="form" class="form-horizontal" autocomplete="off">
+  <div class="form-group col-xs-7">
+    <label>Artist Name
+      <input type="text" name="artist[artistname]" id="artist_name" class="form-control">
+    </label>
+    <label>Image URL
+      <input type="text" name="artist[image_url]" id="artist_name" class="form-control">
+    </label>
+    <label>About
+      <textarea name="artist[about]" rows="30" class="form-control"></textarea>
+    </label>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </div>
 </form>
