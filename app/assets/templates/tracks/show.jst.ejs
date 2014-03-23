@@ -1,35 +1,28 @@
 <div class="row">
-  <div class="col-xs-4">
-    
-    <div id="name_and_message">
-      <h1><%= track.get("title") %></h1>
+  <div class="col-xs-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1>
+          <% if (artist) { %>
+            
+          <a href="<%= '#/artists/' + artist.id %>"><span id="track-artist"><%= track.get("artist").artistname %></a></span>
+          <span id="track-title">- <%= track.get("title") %><span>
+          <% } %>
+        </h1>
+      </div>
     </div>
     
-    <% if (artist) { %>
-    <a class="badge_container" 
-      href="<%= '#/artists/' + artist.id %>">
-      <div class="col-xs-3">
-        <img class="avatar" 
-          src="<%= artist.image_url %>">
-        <img>
-      </div>
-      <div class="col-xs-9">
-        <div class="row">
-          <div class="artist_name">          
-            <%= artist.artistname %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="artist_name">          
-            <%= artist.iq %>
-          </div>
-        </div>
-      </div>
-    </a>
-    <% } %>
+    <div class="panel panel-default">
+      <div class="panel-body" id="lyrics"><%= track.get("lyrics") %></div>
+    </div>
     
   </div>
   
-  <div class="col-xs-7 col-xs-offset-1" id="lyrics"><%= track.get("lyrics") %>
+  <div class="col-xs-4">
+    <p>Deep v swag post-ironic street art. Letterpress quinoa ethnic 3 wolf moon, trust fund single-origin coffee salvia Thundercats American Apparel cred fanny pack gluten-free cray Intelligentsia narwhal. Helvetica Pitchfork viral +1 you probably haven't heard of them slow-carb. Deep v seitan sustainable, 8-bit lo-fi Williamsburg 3 wolf moon fashion axe Thundercats ennui retro iPhone post-ironic. Occupy beard Tonx, VHS distillery literally whatever hoodie sustainable keytar cray hashtag readymade Schlitz skateboard. Try-hard drinking vinegar Pitchfork plaid put a bird on it, fingerstache vegan. Mixtape iPhone Carles XOXO church-key wolf.</p>
+
+<p>Food truck forage hoodie Marfa. Slow-carb skateboard XOXO, trust fund pork belly Echo Park cliche gastropub lomo asymmetrical mlkshk VHS. Flexitarian chillwave PBR&B retro letterpress ennui twee, occupy mixtape artisan Tumblr. Beard literally gastropub High Life, put a bird on it farm-to-table cardigan photo booth art party Pinterest pop-up keffiyeh try-hard chambray irony. Vegan +1 Blue Bottle, master cleanse jean shorts hella deep v direct trade typewriter. Actually master cleanse trust fund, quinoa chambray gluten-free +1 mlkshk. Sustainable DIY hella, Pitchfork jean shorts post-ironic four loko try-hard street art mlkshk American Apparel.</p>
+
+<p>Plaid cray Shoreditch, craft beer Schlitz twee retro American Apparel raw denim master cleanse Cosby sweater disrupt lomo Etsy normcore. Fingerstache roof party keffiyeh pop-up tote bag twee, mixtape art party wolf Blue Bottle Tumblr beard 8-bit tousled. Ugh post-ironic cornhole, whatever Brooklyn drinking vinegar Godard locavore bespoke seitan freegan actually pour-over Vice. Gluten-free post-ironic roof party fixie raw denim. Seitan cardigan Cosby sweater street art, slow-carb hashtag PBR twee blog vegan salvia. Brunch street art banjo photo booth aesthetic paleo, mlkshk retro Thundercats. Ethnic narwhal Cosby sweater Intelligentsia paleo.</p>
   </div>
 </div>

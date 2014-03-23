@@ -10,23 +10,17 @@
     <% for (var i = 0; i < colCount; i++) { %>
         
       
-    <a class="col-xs-4 badge_container" 
-      href="<%= '#/artists/' + artists.models[artistNum + i].get('id') %>">
-      <div class="col-xs-3">
-        <img class="avatar" 
-          src="<%= artists.models[artistNum + i].get('image_url') %>">
-        <img>
+    <a class="col-xs-4 thumbnail" href="<%= '#/artists/' + artists.models[artistNum + i].get('id') %>">
+      <div class="col-xs-4">
+        <img src="<%= artists.models[artistNum + i].get('image_url') %>">
+        </img>
       </div>
-      <div class="col-xs-9">
-        <div class="row">
-          <div class="artist_name">          
-            <%= artists.models[artistNum + i].get('artistname') %>
-          </div>
+      <div class="col-xs-8">
+        <div class="row" id="artist_name">         
+          <h4><%= artists.models[artistNum + i].get('artistname') %></h4>
         </div>
-        <div class="row">
-          <div class="artist_name">          
-            <%= artists.models[artistNum + i].get('iq') %>
-          </div>
+        <div class="row artist_iq">
+          <h4><%= artists.models[artistNum + i].get('iq') %></h4>
         </div>
       </div>
     </a>
@@ -35,4 +29,4 @@
   </div>
    
   <% artistNum += colCount %>
-<% } %>  
+<% } %>

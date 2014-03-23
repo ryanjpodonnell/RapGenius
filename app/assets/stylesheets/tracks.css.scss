@@ -2,35 +2,79 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$color-light-green: #79cc36;
+$color-dark-green: #192b0b;
+$color-yellow: #ffc31c;
+$color-grey: #333;
+$color-dark-grey: #111;
+$color-light-blue: #05aae5;
+$color-light-grey: #b0b0b0;
+$color-grey: #1c1c1c;
+$color-light-blue: #23c1fa;
+
 .tt-dropdown-menu {
-    width:100%;
+  width:100%;
 }
 .twitter-typeahead {
-    width: 100%;
+  width: 100%;
 }
 
 .tt-suggestions {
-    background-color: #ffffff;
-    border: solid #000000 1px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+  color: black;
+  background-color: #ffffff;
+  border: solid #000000 1px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
     
 }
 
 .tt-suggestion {
-    padding-left: 10px;
-    border-bottom: solid #000000 1px;
+  padding-left: 10px;
+  border-bottom: solid #000000 1px;
 }
 
 .tt-suggestion:hover {
-    background-color: darkgray;
+  background-color: darkgray;
 }
 
-label {
-  width: 100%;
+.panel {
+  background-color: $color-dark-grey;
+  border-color: $color-grey;
+}
+
+.track {
+  padding-left: 10px;
+  border-left: 3px solid $color-light-blue;
+  color: $color-light-grey;
+  font-family: 'Candal' sans-serif;
+  font-size: 20px;
+}
+
+.track-by {
+  color: $color-light-grey;
+  font-family: 'Ubuntu Mono';
+  font-style: italic;
+  font-size: 12px;
+}
+
+.track-artist {
+  color: $color-light-grey;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#track-artist {
+  color: $color-light-blue;
+}
+
+#track-title {
+  color: white;
 }
 
 #lyrics {
   white-space: pre-wrap;
-  color: #FFC31C;
 }

@@ -13,12 +13,38 @@
  */
 
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Candal);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400italic);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+
+$color-light-green: #79cc36;
+$color-dark-green: #192b0b;
+$color-yellow: #ffc31c;
+$color-grey: #333;
+$color-dark-grey: #111;
+$color-light-blue: #05aae5;
+$color-light-grey: #b0b0b0;
+$color-grey: #1c1c1c;
 
 body {
   background-color: black;
+  color: white;
 }
 
 h1 {
-  color: #79cc36;
+  color: $color-light-green;
   font-weight: bold;
+}
+
+label {
+  width: 100%;
+}
+
+#navbar {
+  border-bottom: 2px solid $color-yellow;
+}
+
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
 }

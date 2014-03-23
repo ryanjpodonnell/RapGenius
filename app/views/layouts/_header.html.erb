@@ -1,16 +1,18 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="glyphicon glyphicon-glass"></span>
-      </button>
-        <%= link_to "Rap Genius", '#/', class: "navbar-brand" %>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<nav class="navbar navbar-inverse" role="navigation" id="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="navbar-brand" href="#/">rap genius</a>
+      
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+          <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+        </div>
+      </form>
+
       <ul class="nav navbar-nav">
-        <li><%= link_to "Tracks", '#/' %></li>
-        <li><%= link_to "Artists", '#/artists' %></li>
+        <li><a href="#/tracks/new">ADD NEW SONG</a></li>
+        <li><a href="#/artists">VERIFIED ARTISTS</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -27,7 +29,7 @@
           <button class="btn btn-primary header-button" data-toggle="modal" data-target="#modal-window2">Sign Up</button>
         <% end %>
       </ul>
+    
     </div>
   </div>
 </nav>
-

@@ -1,14 +1,19 @@
-<h1>TRACK INDEX</h1>
-
-<a href="#/artists/new">New Artist</a>
-<a href="#/tracks/new">New Track</a>
-<br>
-
-<ul>
-  <% for (var i = 0; i < tracks.length; i++) { %>
-    <li>
+<div class="row">
+  <div class="col-xs-6">
+    <% for (var i = 0; i < tracks.length; i++) { %>
       <a href="<%= '#/tracks/' + tracks.models[i].id %>">
-      <%= tracks.models[i].attributes.title %>
-    </li>
-  <% } %>
-</ul>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <span class="track"><%= tracks.models[i].attributes.title %></span> <span class="track-by">by</span> <span class="track-artist"><%= tracks.models[i].attributes.artist.artistname %></span>
+          </div>
+        </div>
+      </a>
+    <% } %>
+  </div>
+  
+  <div class="col-xs-6">
+    <p>Cosby sweater keytar retro put a bird on it vinyl, cred letterpress cray. McSweeney's try-hard selvage bicycle rights hashtag irony. Schlitz farm-to-table sriracha squid, Brooklyn tousled 8-bit mumblecore PBR&B artisan mustache lomo swag Truffaut keffiyeh. Gastropub Portland hashtag kogi fanny pack shabby chic. Brooklyn mixtape meggings deep v, scenester master cleanse polaroid Helvetica Neutra pork belly kitsch bitters Pitchfork. Four loko swag chillwave, Godard Blue Bottle actually Intelligentsia kale chips Portland art party leggings. Pork belly swag put a bird on it vinyl, keytar gastropub plaid flexitarian sustainable High Life dreamcatcher.</p>
+
+<p>Cosby sweater Austin street art, Odd Future pug master cleanse plaid yr. Cornhole jean shorts synth kitsch, street art DIY irony Wes Anderson. Pinterest gastropub lo-fi, pickled Intelligentsia 8-bit freegan bespoke tousled. Fashion axe Wes Anderson blog, mixtape fanny pack cred pug mumblecore synth beard cliche street art gastropub. Chambray leggings street art Pinterest, pork belly church-key hashtag. Trust fund gluten-free VHS, authentic before they sold out +1 DIY forage lomo freegan hashtag plaid Banksy. Hoodie beard Banksy, semiotics Helvetica Pinterest selvage.</p>
+  </div>
+</div>

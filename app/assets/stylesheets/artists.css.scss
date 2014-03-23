@@ -2,49 +2,52 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-img.avatar_large {
-  border:3px solid #79cc36;
-  max-width: 100%;
-  margin-bottom: 10px;
-}
+$color-light-green: #79cc36;
+$color-dark-green: #192b0b;
+$color-yellow: #ffc31c;
+$color-grey: #333;
+$color-dark-grey: #111;
+$color-light-blue: #05aae5;
+$color-light-grey: #b0b0b0;
+$color-grey: #1c1c1c;
 
 #name_and_message {
-  border-bottom: 2px solid #79cc36;
+  border-bottom: 2px solid $color-light-green;
   margin-bottom: 10px;
-}
-
-img.avatar {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  float: left;
 }
 
 .sidebar_unit {
-  background-color: #111;
-  border: 1px solid #333;
+  background-color: $color-dark-grey;
+  border: 1px solid $color-grey;
 }
 
-#label {
-  background-color: #1c1c1c;
-  color: #666;
+.thumbnail {
+  background-color: #0C1606;
+  border-color: black;
+  border-bottom: 1px solid $color-dark-green;
+  border-top: 1px solid $color-dark-green;
 }
 
-.badge_container {
-  border-top: 1px solid #192b0b;
-  margin-top: 10px;
-  transition: background-color 0.5s;
+.thumbnail img {
+  max-width: 100%;
+  border: 3px solid $color-light-green;
 }
 
-.badge_container .avatar {
-  height: 45px;
-  width: 45px;
-  border: 1px solid #79cc36;
+#artist_name {
+  color: $color-light-green;
+  border-bottom: 1px dotted $color-light-green;
 }
 
-.badge_container .artist_name {
-  border-bottom: 1px dotted #497c20;
+.artist_iq {
+  color: $color-yellow;
 }
 
-.badge_container:hover {
- background-color: #0C1405;
+.panel-default > .panel-heading {
+  background-color: $color-grey;
+  border-bottom: $color-grey;
+  color: $color-light-grey;
+}
+
+#about {
+  white-space: pre-wrap;
 }
