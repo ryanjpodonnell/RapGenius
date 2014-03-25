@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: annotations
+#
+#  id         :integer          not null, primary key
+#  created_at :datetime
+#  updated_at :datetime
+#  referent   :string(255)
+#  body       :text
+#  track_id   :integer
+#  creator_id :integer
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 # This model initially had no columns defined.  If you add columns to the

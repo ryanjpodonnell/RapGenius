@@ -14,11 +14,13 @@
 #  youtube_url    :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
+#  slug           :string(255)
 #
 
 class Track < ActiveRecord::Base
-  attr_accessible :creator_id, :artist_id, :album_id, :track_num, :title,
-                  :lyrics, :soundcloud_url, :spotify_url, :youtube_url
+  extend FriendlyId
+  friendly_id :title, :use => :slugged
+  
   
   belongs_to(
     :album,
@@ -39,5 +41,12 @@ class Track < ActiveRecord::Base
     :primary_key => :id,
     :foreign_key => :creator_id,
     :class_name => "Creator"
+  )
+  
+  has_many(
+    :annotations,
+    :primary_key => :id,
+    :foreign_key => :track_id,
+    :class_name => "Annotation"
   )
 end

@@ -11,8 +11,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'annotate'
 gem 'bcrypt'
 gem 'backbone-on-rails'
-gem 'protected_attributes'
-gem 'jquery-ui-rails'
+gem 'friendly_id'
+gem 'debugger'
 
 group :doc do
   gem 'sdoc', require: false

@@ -12,8 +12,6 @@
 #
 
 class Artist < ActiveRecord::Base
-  attr_accessible :artistname, :about, :iq, :image_url
-  
   has_many(
     :tracks,
     :primary_key => :id,

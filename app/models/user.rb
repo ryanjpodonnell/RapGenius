@@ -18,6 +18,13 @@ class User < ActiveRecord::Base
     :class_name => "Track"
   )
   
+  has_many(
+    :annotations,
+    :primary_key => :id,
+    :foreign_key => :creator_id,
+    :class_name => "Annotation"
+  )
+  
   attr_reader :password
   validates :password_digest, :presence => true
   validates :password, :length => { :minimum => 6, :allow_nil => true }

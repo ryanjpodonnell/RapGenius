@@ -1,6 +1,6 @@
 class Api::ArtistsController < ApplicationController
   def create
-    @artist = Artist.new(params[:artist])
+    @artist = Artist.new(artist_params)
 
     if @artist.save
       render "artists/show"
@@ -25,5 +25,10 @@ class Api::ArtistsController < ApplicationController
   def show
     @artist = Artist.find(params[:id])
     render "artists/show"
+  end
+  
+  private
+  def artist_params
+    params.require(:artist).permit(:artistname, :iq, :about, :image_url)
   end
 end
