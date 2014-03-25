@@ -11,6 +11,7 @@ $color-light-blue: #05aae5;
 $color-light-grey: #b0b0b0;
 $color-grey: #1c1c1c;
 $color-light-blue: #23c1fa;
+$color-highlight: #a0a0a0;
 
 .tt-dropdown-menu {
   width:100%;
@@ -63,6 +64,34 @@ $color-light-blue: #23c1fa;
   font-size: 20px;
 }
 
+.popover {
+  background-color: $color-yellow;
+}
+
+.popover-content {
+  background-color: $color-yellow;
+  color: black;
+  font-weight: bold;
+}
+
+.popover {
+  &.top > .arrow {
+    border-top-color: $color-yellow;
+    border-top-color: $color-yellow;
+    &:after {
+      border-top-color: $color-yellow;
+    }
+  }
+}
+
+.annotate-text {
+  background-color: $color-highlight;
+}
+
+.modal {
+  color: $color-dark-grey;
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -77,4 +106,5 @@ a:hover {
 
 #lyrics {
   white-space: pre-wrap;
+  font-size: 16px;
 }

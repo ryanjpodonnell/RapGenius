@@ -1,35 +1,32 @@
 <nav class="navbar navbar-inverse" role="navigation" id="navbar">
   <div class="navbar-inner">
-    <div class="container">
-      <a class="navbar-brand" href="#/">rap genius</a>
-      
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-          <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-        </div>
-      </form>
-
-      <ul class="nav navbar-nav">
-        <li><a href="#/tracks/new">ADD NEW SONG</a></li>
-        <li><a href="#/artists">VERIFIED ARTISTS</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <% if signed_in? %>
-          <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <%= current_user.username %> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><%= link_to "Sign Out", session_url, :method => :delete %></li>
-          </ul>
-          </li>
-        <% else %>
-          <button class="btn btn-primary header-button" data-toggle="modal" data-target="#modal-window">Sign In</button>
-          <button class="btn btn-primary header-button" data-toggle="modal" data-target="#modal-window2">Sign Up</button>
-        <% end %>
-      </ul>
+    <a class="navbar-brand" href="#/">rap genius</a>
     
-    </div>
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+      </div>
+    </form>
+
+    <ul class="nav navbar-nav">
+      <li><a href="#/tracks/new">ADD NEW SONG</a></li>
+      <li><a href="#/artists">VERIFIED ARTISTS</a></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <% if signed_in? %>
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <%= current_user.username %> <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Sign Out", session_url, :method => :delete %></li>
+        </ul>
+        </li>
+      <% else %>
+        <button class="btn btn-primary header-button" data-toggle="modal" data-target="#modal-window">Sign In</button>
+        <button class="btn btn-primary header-button" data-toggle="modal" data-target="#modal-window2">Sign Up</button>
+      <% end %>
+    </ul>
   </div>
 </nav>

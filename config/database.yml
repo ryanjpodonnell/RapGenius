@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: RapGenius_development
   pool: 5
-  username:
+  username: 
   password:
 
 test:
@@ -11,7 +11,7 @@ test:
   encoding: unicode
   database: RapGenius_test
   pool: 5
-  username:
+  username: 
   password:
 
 production:
@@ -19,5 +19,5 @@ production:
   encoding: unicode
   database: RapGenius_production
   pool: 5
-  username:
+  username: 
   password:
