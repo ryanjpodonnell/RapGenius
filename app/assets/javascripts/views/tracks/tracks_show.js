@@ -5,7 +5,8 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
     "dblclick #lyrics": "temp",
     "mouseup #lyrics": "getSelectionText",
     "mousedown .popover": "popoverClick",
-    "click #submit": "submit"
+    "click #submit": "submit",
+    "mousedown .annotation": "showAnnotation"
   },
   
   initialize: function () {
@@ -127,10 +128,9 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
             insertedPopOver = true
           }
           $('#lyrics').prepend(lyrics.slice(annotationArray.models[i].get("end_index"), end));
-          $('#lyrics').prepend('<a class="annotation" href="/annotations/' 
-            + annotationArray.models[i].get("id") +'" data-annotation-id="' 
+          $('#lyrics').prepend('<span class="annotation" data-annotation-id="' 
             + annotationArray.models[i].get("id") + '">' 
-            + annotationArray.models[i].get("referent") + '</a>');
+            + annotationArray.models[i].get("referent") + '</span>');
           end = annotationArray.models[i].get("start_index");
           
           if (i === 0 && popStart < annotationArray.models[i].get("start_index") && popStart !== -1) {
@@ -151,5 +151,26 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
       }
     }
     $('.annotate-popover').popover('show')
+  },
+  
+  showAnnotation: function(event) {
+    $('.annotation-display').modal({
+      backdrop: false
+    });
+    
+    $('.annotation-display').css({
+      'margin-top': function () {
+        return -($("body", top.document).scrollTop()) + (event.currentTarget.offsetTop);
+      },
+      'margin-left': function () {
+        return event.currentTarget.offsetLeft + event.currentTarget.offsetWidth;
+      }
+    });
+    
+    var annotationId = event.currentTarget.dataset.annotationId;
+    var annotation = this.model.annotations().get(annotationId);
+    $('.annotation-display .modal-title').text(annotation.get("referent"));
+    $('.annotation-display .modal-body').text(annotation.get("body"));
+    $('.annotation-display').modal('show');
   }
 });
