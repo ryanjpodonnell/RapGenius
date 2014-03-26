@@ -15,6 +15,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  slug           :string(255)
+#  about          :text
 #
 
 class Track < ActiveRecord::Base

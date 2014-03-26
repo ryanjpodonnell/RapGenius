@@ -17,7 +17,7 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
       track: this.model,
       artist: this.model.get('artist')
     });
-
+    
     this.$el.html(renderedContent);
     
     return this;
@@ -27,48 +27,60 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
     if (!this._lyricsText) {
       this._lyricsText = $('#lyrics').text();
     }
+    var selection = window.getSelection();
+    this._text = selection.toString();
+    var range = selection.getRangeAt(0);
+    this.getSelectionInfo(range, selection.toString());
+  },
+  
+  getSelectionInfo: function (range, text) {
+    var startPos = range.startOffset;
+    var endPos = range.endOffset;
+    var startNode = range.startContainer;
     
-    this._text = "";
-    var entireText = "";
-    var entireIndex = 0;
-    var offset = 0;
-    var extent = 0;
+    var $li = $(startNode.parentNode);//.closest('.annotations')
+    var children = [].slice.call($li[0].childNodes);
+
+    var offset = this.getOffset(startNode, children);
+
+    this._offsetStartPos = offset + startPos;
+    this._offsetEndPos = offset + endPos;
+
     
-    if (window.getSelection) {
-      $('#lyrics').html(this._lyricsText);
-      this._text = window.getSelection().toString();
-      offset = window.getSelection().baseOffset;
-      extent = window.getSelection().extentOffset;
-      entireIndex = (offset > extent) ? extent : offset;
-      entireText = this._lyricsText.slice(0, entireIndex);
-    }
-    
-    if (this._text != "") {
-      $('#lyrics').html(this._lyricsText);
-      
-      if (offset === extent) {
-        return;
-      }
-      
-      var inputText = document.getElementById("lyrics");
-      var innerText = inputText.innerText;
-      var index = entireText.length;
-        
-      $('#lyrics').html(this._lyricsText.slice(0, index));
-      $('#lyrics').append('<span class="annotate-text">' + this._text + '</span>');
+    if (this._offsetStartPos !== this._offsetEndPos) {
+      $('#lyrics').html(this._lyricsText.slice(0, this._offsetStartPos));
+      $('#lyrics').append('<span class="annotate-text">' + text + '</span>');
       $('#lyrics').append('<span class="annotate-popover" data-toggle="popover" data-content="Annotate" data-placement="top"></span>');
-      $('#lyrics').append(this._lyricsText.slice(index + this._text.length));
-      $('.annotate-popover').popover('show');
+      $('#lyrics').append(this._lyricsText.slice(this._offsetEndPos));
+      $('.annotate-popover').popover('show')
     } else {
+      $('#lyrics').text(this._lyricsText)
       $('.annotate-popover').popover('hide');
     }
   },
   
-  popoverClick: function() {
+  getOffset: function (startNode, children) {
+    var offset = 0;
+
+    _(children).find(function(el) {
+      if (el.textContent !== startNode.textContent) {
+        if (el.textContent !== "Annotate") {
+          offset += el.textContent.length;
+        }
+      }
+      return el.textContent === startNode.textContent;
+    });
+
+    return offset;
+  },
+  
+  popoverClick: function () {
     $('.annotation-modal').modal('show');
   },
   
-  submit: function() {      
+  submit: function() {
+    var view = this;
+    
     var newAnnotation = new RapGenius.Models.Annotation();
     var body = this.$('#body').val();
     
@@ -76,11 +88,13 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
       track_id: this.model.id,
       creator_id: RapGenius.user_id,
       referent: this._text,
+      start_index: this._offsetStartPos,
+      end_index: this._offsetEndPos,
       body: body
     });
     newAnnotation.save({}, {
       success: function () {
-        RapGenius.Collections.annotations.add(newAnnotation);
+        view.model.annotations().add(newAnnotation);
         $('.annotation-modal').modal('hide');
       }
     });
