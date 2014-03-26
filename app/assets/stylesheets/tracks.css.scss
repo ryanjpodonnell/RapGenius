@@ -88,6 +88,15 @@ $color-highlight: #a0a0a0;
   background-color: $color-highlight;
 }
 
+.annotation {
+  color: $color-yellow;
+}
+
+.annotation:hover {
+  background-color: $color-yellow;
+  color: black;
+}
+
 .modal {
   color: $color-dark-grey;
 }

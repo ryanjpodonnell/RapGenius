@@ -13,20 +13,23 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
   },
   
   render: function () {
+    if (!this._lyricsText && this.model.get('lyrics')) {
+      $('#lyrics').html(this.model.get('lyrics'));
+      this._lyricsText = $('#lyrics').html();
+    }
+    
     var renderedContent = this.template({
       track: this.model,
       artist: this.model.get('artist')
     });
     
     this.$el.html(renderedContent);
-    
+    this.placeAnnotations(-1, -1, "");
+        
     return this;
   },
   
   getSelectionText: function (event) {
-    if (!this._lyricsText) {
-      this._lyricsText = $('#lyrics').text();
-    }
     var selection = window.getSelection();
     this._text = selection.toString();
     var range = selection.getRangeAt(0);
@@ -37,25 +40,28 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
     var startPos = range.startOffset;
     var endPos = range.endOffset;
     var startNode = range.startContainer;
+    var endNode = range.endContainer;
     
-    var $li = $(startNode.parentNode);//.closest('.annotations')
+    var $li = $(startNode.parentNode);
     var children = [].slice.call($li[0].childNodes);
-
     var offset = this.getOffset(startNode, children);
 
     this._offsetStartPos = offset + startPos;
     this._offsetEndPos = offset + endPos;
-
+    
+    for (var i = 0; i < this.model.annotations().length; i++) {
+      if ((startNode !== endNode) || (endNode.parentNode.id !== 'lyrics' && startNode.parentNode.id !== 'lyrics')) {
+        this.placeAnnotations(-1, -1, "");
+        return;
+      }
+    }
     
     if (this._offsetStartPos !== this._offsetEndPos) {
-      $('#lyrics').html(this._lyricsText.slice(0, this._offsetStartPos));
-      $('#lyrics').append('<span class="annotate-text">' + text + '</span>');
-      $('#lyrics').append('<span class="annotate-popover" data-toggle="popover" data-content="Annotate" data-placement="top"></span>');
-      $('#lyrics').append(this._lyricsText.slice(this._offsetEndPos));
-      $('.annotate-popover').popover('show')
-    } else {
-      $('#lyrics').text(this._lyricsText)
-      $('.annotate-popover').popover('hide');
+      this.placeAnnotations(this._offsetStartPos, this._offsetEndPos, text);
+    }
+    
+    if (text === "") {
+      this.placeAnnotations(-1, -1, "");
     }
   },
   
@@ -94,9 +100,56 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
     });
     newAnnotation.save({}, {
       success: function () {
-        view.model.annotations().add(newAnnotation);
         $('.annotation-modal').modal('hide');
+        view.model.annotations().add(newAnnotation);
+        view.placeAnnotations(-1, -1, "");
       }
     });
+  },
+  
+  placeAnnotations: function(popStart, popEnd, text) {
+    if (this._lyricsText) {
+      var lyrics = this._lyricsText;
+      var end = this._lyricsText.length;
+      
+      var annotationArray = this.model.annotations().sort();
+    
+      if (annotationArray.length > 0) {
+        $('#lyrics').html("");
+        var insertedPopOver = false;
+        for (var i = annotationArray.length-1; i >= 0; i--) {
+          $('.annotate-popover').popover('hide');
+          if (popStart > annotationArray.models[i].get("start_index") && insertedPopOver == false) {
+            $('#lyrics').prepend(lyrics.slice(popEnd, end));
+            $('#lyrics').prepend('<span class="annotate-popover" data-toggle="popover" data-content="Annotate" data-placement="top"></span>');
+            $('#lyrics').prepend('<span class="annotate-text">' + text + '</span>');
+            end = popStart;
+            insertedPopOver = true
+          }
+          $('#lyrics').prepend(lyrics.slice(annotationArray.models[i].get("end_index"), end));
+          $('#lyrics').prepend('<a class="annotation" href="/annotations/' 
+            + annotationArray.models[i].get("id") +'" data-annotation-id="' 
+            + annotationArray.models[i].get("id") + '">' 
+            + annotationArray.models[i].get("referent") + '</a>');
+          end = annotationArray.models[i].get("start_index");
+          
+          if (i === 0 && popStart < annotationArray.models[i].get("start_index") && popStart !== -1) {
+            $('#lyrics').prepend(lyrics.slice(popEnd, annotationArray.models[i].get("start_index")));
+            $('#lyrics').prepend('<span class="annotate-popover" data-toggle="popover" data-content="Annotate" data-placement="top"></span>');
+            $('#lyrics').prepend('<span class="annotate-text">' + text + '</span>');
+            end = popStart;
+            insertedPopOver = true
+          }
+        }
+        $('#lyrics').prepend(lyrics.slice(0, end)); 
+      } else if (annotationArray.length == 0 && popStart !== -1) {
+        $('#lyrics').html("");
+        $('#lyrics').prepend(lyrics.slice(popEnd, end));
+        $('#lyrics').prepend('<span class="annotate-popover" data-toggle="popover" data-content="Annotate" data-placement="top"></span>');
+        $('#lyrics').prepend('<span class="annotate-text">' + text + '</span>');
+        $('#lyrics').prepend(lyrics.slice(0, popStart)); 
+      }
+    }
+    $('.annotate-popover').popover('show')
   }
 });

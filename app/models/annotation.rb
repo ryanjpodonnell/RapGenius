@@ -14,6 +14,8 @@
 #
 
 class Annotation < ActiveRecord::Base
+  validates :body, :presence => true
+  
   belongs_to(
     :track,
     :primary_key => :id,
