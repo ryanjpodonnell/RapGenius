@@ -12,7 +12,6 @@ gem 'annotate'
 gem 'bcrypt'
 gem 'backbone-on-rails'
 gem 'friendly_id'
-gem 'debugger'
 
 group :doc do
   gem 'sdoc', require: false
