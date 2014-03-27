@@ -6,9 +6,10 @@
 #  artist_id    :integer          not null
 #  year         :integer          not null
 #  title        :string(255)      not null
-#  release_date :date             not null
+#  release_date :date
 #  created_at   :datetime
 #  updated_at   :datetime
+#  about        :text
 #
 
 class Album < ActiveRecord::Base

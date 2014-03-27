@@ -1,5 +1,5 @@
-RapGenius.Views.TracksNew = Backbone.View.extend({
-  template: JST['tracks/new'],
+RapGenius.Views.AlbumsNew = Backbone.View.extend({
+  template: JST['albums/new'],
   
   events: {
     "submit form": "submit"
@@ -10,7 +10,7 @@ RapGenius.Views.TracksNew = Backbone.View.extend({
     this.listenTo(this.artists, "sync", this.render);
   },
   
-  render: function () {  
+  render: function () {
     var availableArtists = [];
     for (var i = 0; i < this.artists.length; i++) {
       availableArtists.push(this.artists.models[i].get('artistname'));
@@ -31,8 +31,8 @@ RapGenius.Views.TracksNew = Backbone.View.extend({
   submit: function (event) {
     event.preventDefault();
      
-    var params = $(event.currentTarget).serializeJSON()["track"];
-    var newTrack = new RapGenius.Models.Track(params);
+    var params = $(event.currentTarget).serializeJSON()["album"];
+    var newAlbum = new RapGenius.Models.Album(params);
     var artistName = this.$('#artist_name').val();
     var foundArtist = false;
     for (var i = 0; i < this.artists.length; i++) {
@@ -44,17 +44,14 @@ RapGenius.Views.TracksNew = Backbone.View.extend({
       $('#artist_name').addClass("alert alert-danger");
       return;
     }
-    
-    newTrack.set({
-      album_id: 0, 
-      track_num: 0, 
+    debugger
+    newAlbum.set({ 
       artist_id: this.artists.where({artistname: artistName})[0].id, 
-      creator_id: RapGenius.user_id
     });
     
-    newTrack.save({}, {
+    newAlbum.save({}, {
       success: function () {
-        RapGenius.Collections.tracks.add(newTrack);
+        RapGenius.Collections.albums.add(newAlbum);
         Backbone.history.navigate("#/artists", { trigger: true });
       }
     });

@@ -93,7 +93,7 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
     
     newAnnotation.set({ 
       track_id: this.model.id,
-      creator_id: RapGenius.user_id,
+      creator_id: 0,
       referent: this._text,
       start_index: this._offsetStartPos,
       end_index: this._offsetEndPos,

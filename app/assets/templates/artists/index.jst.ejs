@@ -20,7 +20,7 @@
           <h4><%= artists.models[artistNum + i].get('artistname') %></h4>
         </div>
         <div class="row artist_iq">
-          <h4><%= artists.models[artistNum + i].get('iq') %></h4>
+          <h4><%= artists.models[artistNum + i].attributes.tracks.length %></h4>
         </div>
       </div>
     </a>

@@ -1,0 +1,22 @@
+<h1>ADD A NEW ALBUM</h1>
+
+<form role="form" class="form-horizontal" autocomplete="off">
+  <div class="form-group col-xs-7">
+    <label>Primary Artist
+      <input type="text" name="artistname" id="artist_name"                           data-provide="typeahead" class="typeahead form-control">
+    </label>
+    <label>Album Name
+      <input type="text" name="album[title]" id="album_title" class="form-control">
+    </label>
+    <label>Year
+      <input type="text" name="album[year]" id="album_year" class="form-control">
+    </label>
+    <label>Image URL
+      <input type="text" name="album[image_url]" id="album_url" class="form-control">
+    </label>
+    <label>About
+      <textarea name="album[about]" rows="30" class="form-control"></textarea>
+    </label>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </div>
+</form>

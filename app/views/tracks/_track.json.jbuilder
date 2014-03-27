@@ -2,6 +2,8 @@ json.(track, :id, :creator_id, :artist_id, :album_id, :track_num, :title, :lyric
 
 json.artist(track.artist, :id, :artistname, :iq, :image_url)
 
+# json.album(track.album, :id, :year, :about, :image_url, :title)
+
 json.annotations(annotations) do |annotation|
   json.partial!("annotations/annotation", :annotation => annotation)
 end
