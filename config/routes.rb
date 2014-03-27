@@ -6,7 +6,6 @@ RapGenius::Application.routes.draw do
     resources :artists, :only => [:create, :destroy, :index, :show]
     resources :tracks, :only => [:create, :destroy, :index, :show]
     resources :annotations, :only => [:create, :show, :index]
-    resources :albums, :only => [:create, :show, :index]
   end
   
   root to: "api/tracks#index"

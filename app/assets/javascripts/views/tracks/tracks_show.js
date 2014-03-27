@@ -60,7 +60,6 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
     if (this._offsetStartPos !== this._offsetEndPos) {
       this.placeAnnotations(this._offsetStartPos, this._offsetEndPos, text);
     }
-    
     if (text === "") {
       this.placeAnnotations(-1, -1, "");
     }
@@ -148,7 +147,11 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
         $('#lyrics').prepend('<span class="annotate-popover" data-toggle="popover" data-content="Annotate" data-placement="top"></span>');
         $('#lyrics').prepend('<span class="annotate-text">' + text + '</span>');
         $('#lyrics').prepend(lyrics.slice(0, popStart)); 
+      } else if (annotationArray.length == 0) {
+        $('#lyrics').html("");
+        $('#lyrics').prepend(lyrics.slice(0, end));
       }
+      
     }
     $('.annotate-popover').popover('show')
   },

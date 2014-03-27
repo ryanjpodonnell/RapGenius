@@ -35,6 +35,7 @@ RapGenius.Views.TracksNew = Backbone.View.extend({
     var newTrack = new RapGenius.Models.Track(params);
     var artistName = this.$('#artist_name').val();
     var foundArtist = false;
+    
     for (var i = 0; i < this.artists.length; i++) {
       if (artistName === this.artists.models[i].get('artistname')) {
         foundArtist = true;
@@ -46,10 +47,8 @@ RapGenius.Views.TracksNew = Backbone.View.extend({
     }
     
     newTrack.set({
-      album_id: 0, 
-      track_num: 0, 
-      artist_id: this.artists.where({artistname: artistName})[0].id, 
-      creator_id: RapGenius.user_id
+      creator_id: 0, 
+      artist_id: this.artists.where({artistname: artistName})[0].id
     });
     
     newTrack.save({}, {

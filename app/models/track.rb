@@ -3,10 +3,7 @@
 # Table name: tracks
 #
 #  id             :integer          not null, primary key
-#  creator_id     :integer          not null
 #  artist_id      :integer          not null
-#  album_id       :integer          not null
-#  track_num      :integer          not null
 #  title          :string(255)      not null
 #  lyrics         :text             not null
 #  soundcloud_url :string(255)
@@ -21,14 +18,6 @@
 class Track < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, :use => :slugged
-  
-  
-  belongs_to(
-    :album,
-    :primary_key => :id,
-    :foreign_key => :album_id,
-    :class_name => "Album"
-  )
   
   belongs_to(
     :artist,
