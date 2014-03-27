@@ -2,15 +2,16 @@
 #
 # Table name: annotations
 #
-#  id          :integer          not null, primary key
-#  created_at  :datetime
-#  updated_at  :datetime
-#  referent    :string(255)
-#  body        :text
-#  track_id    :integer
-#  creator_id  :integer
-#  end_index   :integer
-#  start_index :integer
+#  id             :integer          not null, primary key
+#  created_at     :datetime
+#  updated_at     :datetime
+#  referent       :string(255)
+#  body           :text
+#  track_id       :integer
+#  creator_id     :integer
+#  end_index      :integer
+#  start_index    :integer
+#  filepicker_url :string(255)
 #
 
 class Annotation < ActiveRecord::Base

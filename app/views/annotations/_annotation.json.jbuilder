@@ -1,1 +1,1 @@
-json.(annotation, :id, :referent, :body, :track_id, :creator_id, :start_index, :end_index)
+json.(annotation, :id, :referent, :body, :track_id, :creator_id, :start_index, :end_index, :filepicker_url)

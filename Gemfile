@@ -13,6 +13,7 @@ gem 'bcrypt'
 gem 'backbone-on-rails'
 gem 'friendly_id'
 gem 'paperclip'
+gem 'filepicker-rails'
 gem 'aws-sdk'
 gem 'figaro'
 

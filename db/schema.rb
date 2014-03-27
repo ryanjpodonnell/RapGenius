@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327200749) do
+ActiveRecord::Schema.define(version: 20140327225013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20140327200749) do
     t.integer  "creator_id"
     t.integer  "end_index"
     t.integer  "start_index"
+    t.string   "filepicker_url"
   end
 
   create_table "artists", force: true do |t|
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140327200749) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_url"
+    t.string   "filepicker_url"
   end
 
   add_index "artists", ["artistname"], name: "index_artists_on_artistname", unique: true, using: :btree

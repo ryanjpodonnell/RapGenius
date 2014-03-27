@@ -5,9 +5,15 @@
     <label>Artist Name
       <input type="text" name="artist[artistname]" id="artist_name" class="form-control">
     </label>
-    <label>Image URL
-      <input type="text" name="artist[image_url]" id="artist_name" class="form-control">
+    
+    <label>Photo
+      <input
+        type="filepicker"
+        name="artist[filepicker_url]"
+        class="form-control"
+        data-fp-mimetype="image/*">
     </label>
+    
     <label>About
       <textarea name="artist[about]" rows="30" class="form-control"></textarea>
     </label>

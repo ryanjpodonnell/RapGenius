@@ -71,6 +71,8 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    filepicker-rails (1.0.0)
+      rails (>= 3.2)
     friendly_id (5.0.3)
       activerecord (>= 4.0.0)
     hike (1.2.3)
@@ -162,6 +164,7 @@ DEPENDENCIES
   bcrypt
   coffee-rails (~> 4.0.0)
   figaro
+  filepicker-rails
   friendly_id
   jbuilder (~> 1.2)
   jquery-rails

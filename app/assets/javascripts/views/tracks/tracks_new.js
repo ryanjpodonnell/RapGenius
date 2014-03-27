@@ -54,7 +54,7 @@ RapGenius.Views.TracksNew = Backbone.View.extend({
     newTrack.save({}, {
       success: function () {
         RapGenius.Collections.tracks.add(newTrack);
-        Backbone.history.navigate("#/artists", { trigger: true });
+        Backbone.history.navigate("#/tracks/" + newTrack.id, { trigger: true });
       }
     });
   },

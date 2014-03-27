@@ -8,6 +8,9 @@ RapGenius.Views.ArtistsNew = Backbone.View.extend({
   render: function () {
     var renderedContent = this.template();
     this.$el.html(renderedContent);
+    
+    var $filePickerInput = this.$("input[type=filepicker]");
+    filepicker.constructWidget($filePickerInput[0]);
 
     return this;
   },

@@ -26,6 +26,9 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
     
     this.$el.html(renderedContent);
     this.placeAnnotations(-1, -1, "");
+    
+    var $filePickerInput = this.$("input[type=filepicker]");
+    filepicker.constructWidget($filePickerInput[0]);
         
     return this;
   },
@@ -89,6 +92,7 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
     
     var newAnnotation = new RapGenius.Models.Annotation();
     var body = this.$('#body').val();
+    var filepickerUrl = this.$('#file-picker-url').val();
     
     newAnnotation.set({ 
       track_id: this.model.id,
@@ -96,6 +100,7 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
       referent: this._text,
       start_index: this._offsetStartPos,
       end_index: this._offsetEndPos,
+      filepicker_url: filepickerUrl,
       body: body
     });
     newAnnotation.save({}, {
@@ -172,8 +177,11 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
     
     var annotationId = event.currentTarget.dataset.annotationId;
     var annotation = this.model.annotations().get(annotationId);
+    var annotationUrl = annotation.get("filepicker_url");
+    debugger
     $('.annotation-display .modal-title').text(annotation.get("referent"));
     $('.annotation-display .modal-body').text(annotation.get("body"));
+    $('.annotation-display .modal-body').append("<br><img id='annotation-pic' src='" + annotationUrl + "'>");
     $('.annotation-display').modal('show');
   }
 });
