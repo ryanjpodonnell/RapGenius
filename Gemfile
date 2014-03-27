@@ -12,6 +12,9 @@ gem 'annotate'
 gem 'bcrypt'
 gem 'backbone-on-rails'
 gem 'friendly_id'
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'figaro'
 
 group :doc do
   gem 'sdoc', require: false

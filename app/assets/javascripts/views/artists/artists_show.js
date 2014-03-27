@@ -9,7 +9,7 @@ RapGenius.Views.ArtistsShow = Backbone.View.extend({
   render: function() {
     var renderedContent = this.template({
       artist: this.model,
-      tracks: this.collection
+      tracks: this.collection.where({artist_id: +this.model.id})
     });
 
     this.$el.html(renderedContent);

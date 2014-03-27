@@ -31,7 +31,7 @@ RapGenius.Routers.AppRouter = Backbone.Router.extend({
 
     var showView = new RapGenius.Views.ArtistsShow({
       model: artist,
-      collection: this.tracks.where({artist_id: +id})
+      collection: this.tracks
     });
     
     this._swapView(showView);
