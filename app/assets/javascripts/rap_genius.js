@@ -5,7 +5,7 @@ window.RapGenius = {
   Routers: {},
   initialize: function() {
     var $rootEl = $('#content');
-    var tracks = new RapGenius.Collections.Tracks();
+    var tracks = RapGenius.Collections.tracks;
 
     tracks.fetch({
       success: function () {

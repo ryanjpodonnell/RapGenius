@@ -10,8 +10,5 @@ RapGenius.Views.TracksIndex = Backbone.View.extend({
       tracks: this.collection
     }));
     return this;
-  },
-  
-  fetcharoo: function () {
   }
 });
