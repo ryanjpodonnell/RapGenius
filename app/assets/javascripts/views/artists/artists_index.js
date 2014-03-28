@@ -3,6 +3,7 @@ RapGenius.Views.ArtistsIndex = Backbone.View.extend({
   
   initialize: function() {
     this.listenTo(this.collection, "sync", this.render);
+    this.listenTo(RapGenius.Collections.artists, "add", this.render);
   },
   
   render: function() {
