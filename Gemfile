@@ -16,6 +16,7 @@ gem 'paperclip'
 gem 'filepicker-rails'
 gem 'aws-sdk'
 gem 'figaro'
+gem 'seed_dump'
 
 group :doc do
   gem 'sdoc', require: false
