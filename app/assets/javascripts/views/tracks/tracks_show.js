@@ -14,8 +14,8 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
   },
   
   render: function () {
-    if (!this._lyricsText && this.model.get('lyrics')) {
-      $('#lyrics').html(this.model.get('lyrics'));
+    if (!this._lyricsText && this.model.escape('lyrics')) {
+      $('#lyrics').html(this.model.escape('lyrics'));
       this._lyricsText = $('#lyrics').html();
     }
     
@@ -124,21 +124,21 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
         var insertedPopOver = false;
         for (var i = annotationArray.length-1; i >= 0; i--) {
           $('.annotate-popover').popover('hide');
-          if (popStart > annotationArray.models[i].get("start_index") && insertedPopOver == false) {
+          if (popStart > annotationArray.models[i].escape("start_index") && insertedPopOver == false) {
             $('#lyrics').prepend(lyrics.slice(popEnd, end));
             $('#lyrics').prepend('<span class="annotate-popover" data-toggle="popover" data-content="Annotate" data-placement="top"></span>');
             $('#lyrics').prepend('<span class="annotate-text">' + text + '</span>');
             end = popStart;
             insertedPopOver = true
           }
-          $('#lyrics').prepend(lyrics.slice(annotationArray.models[i].get("end_index"), end));
+          $('#lyrics').prepend(lyrics.slice(annotationArray.models[i].escape("end_index"), end));
           $('#lyrics').prepend('<span class="annotation" data-annotation-id="' 
-            + annotationArray.models[i].get("id") + '">' 
-            + annotationArray.models[i].get("referent") + '</span>');
-          end = annotationArray.models[i].get("start_index");
+            + annotationArray.models[i].escape("id") + '">' 
+            + annotationArray.models[i].escape("referent") + '</span>');
+          end = annotationArray.models[i].escape("start_index");
           
-          if (i === 0 && popStart < annotationArray.models[i].get("start_index") && popStart !== -1) {
-            $('#lyrics').prepend(lyrics.slice(popEnd, annotationArray.models[i].get("start_index")));
+          if (i === 0 && popStart < annotationArray.models[i].escape("start_index") && popStart !== -1) {
+            $('#lyrics').prepend(lyrics.slice(popEnd, annotationArray.models[i].escape("start_index")));
             $('#lyrics').prepend('<span class="annotate-popover" data-toggle="popover" data-content="Annotate" data-placement="top"></span>');
             $('#lyrics').prepend('<span class="annotate-text">' + text + '</span>');
             end = popStart;
@@ -177,10 +177,9 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
     
     var annotationId = event.currentTarget.dataset.annotationId;
     var annotation = this.model.annotations().get(annotationId);
-    var annotationUrl = annotation.get("filepicker_url");
-    debugger
-    $('.annotation-display .modal-title').text(annotation.get("referent"));
-    $('.annotation-display .modal-body').text(annotation.get("body"));
+    var annotationUrl = annotation.escape("filepicker_url");
+    $('.annotation-display .modal-title').text(annotation.escape("referent"));
+    $('.annotation-display .modal-body').text(annotation.escape("body"));
     $('.annotation-display .modal-body').append("<br><img id='annotation-pic' src='" + annotationUrl + "'>");
     $('.annotation-display').modal('show');
   }

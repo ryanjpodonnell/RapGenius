@@ -4,16 +4,15 @@
       <div class="panel-body">
         <h1>
           <% if (artist) { %>
-            
           <a href="<%= '#/artists/' + artist.id %>"><span id="track-artist"><%= track.get("artist").artistname %></a></span>
-          <span id="track-title">- <%= track.get("title") %><span>
+          <span id="track-title">- <%= track.escape("title") %><span>
           <% } %>
         </h1>
       </div>
     </div>
     
     <div class="panel panel-default">
-      <div class="panel-body" id="lyrics"><%= track.get("lyrics") %></div>
+      <div class="panel-body" id="lyrics"><%= track.escape("lyrics") %></div>
     </div>
   </div>
   
@@ -21,12 +20,12 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
-          <% if (track.get("title")) { %>
-          ABOUT <%= track.get("title").toUpperCase() %>
+          <% if (track.escape("title")) { %>
+          ABOUT <%= track.escape("title").toUpperCase() %>
           <% } %>
         </h3>
       </div>
-      <div class="panel-body" id="about"><%= track.get("about") %></div>
+      <div class="panel-body" id="about"><%= track.escape("about") %></div>
     </div>    
   </div>
 </div>
