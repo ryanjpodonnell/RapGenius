@@ -13,7 +13,7 @@ RapGenius.Views.TracksNew = Backbone.View.extend({
   render: function () {  
     var availableArtists = [];
     for (var i = 0; i < this.artists.length; i++) {
-      availableArtists.push(this.artists.models[i].escape('artistname'));
+      availableArtists.push(this.artists.models[i].get('artistname'));
     }
     
     var renderedContent = this.template();
@@ -37,7 +37,7 @@ RapGenius.Views.TracksNew = Backbone.View.extend({
     var foundArtist = false;
     
     for (var i = 0; i < this.artists.length; i++) {
-      if (artistName === this.artists.models[i].escape('artistname')) {
+      if (artistName === this.artists.models[i].get('artistname')) {
         foundArtist = true;
       }
     }

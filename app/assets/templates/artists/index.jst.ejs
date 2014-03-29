@@ -10,14 +10,14 @@
     <% for (var i = 0; i < colCount; i++) { %>
         
       
-    <a class="col-xs-4 thumbnail" href="<%= '#/artists/' + artists.models[artistNum + i].escape('id') %>">
+    <a class="col-xs-4 thumbnail" href="<%= '#/artists/' + artists.models[artistNum + i].get('id') %>">
       <div class="col-xs-4">
-        <img src="<%= artists.models[artistNum + i].escape('filepicker_url') %>">
+        <img src="<%= artists.models[artistNum + i].get('filepicker_url') %>">
         </img>
       </div>
       <div class="col-xs-8">
         <div class="row" id="artist_name_show">         
-          <h4><%= artists.models[artistNum + i].escape('artistname') %></h4>
+          <h4><%= artists.models[artistNum + i].get('artistname') %></h4>
         </div>
         <div class="row artist_iq">
           <h4><%= artists.models[artistNum + i].attributes.tracks.length %></h4>
