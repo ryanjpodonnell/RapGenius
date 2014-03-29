@@ -84,6 +84,8 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
   },
   
   popoverClick: function () {
+    this.$('#body').val("");
+    this.$('#file-picker-url').val("");
     $('.annotation-modal').modal('show');
   },
   
@@ -162,23 +164,9 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
   },
   
   showAnnotation: function(event) {
-    $('.annotation-display').modal({
-      backdrop: false
-    });
-    
-    $('.annotation-display').css({
-      'margin-top': function () {
-        return -($("body", top.document).scrollTop()) + (event.currentTarget.offsetTop);
-      },
-      'margin-left': function () {
-        return event.currentTarget.offsetLeft + event.currentTarget.offsetWidth;
-      }
-    });
-    
     var annotationId = event.currentTarget.dataset.annotationId;
     var annotation = this.model.annotations().get(annotationId);
     var annotationUrl = annotation.get("filepicker_url");
-    debugger
     $('.annotation-display .modal-title').text(annotation.get("referent"));
     $('.annotation-display .modal-body').text(annotation.get("body"));
     $('.annotation-display .modal-body').append("<br><img id='annotation-pic' src='" + annotationUrl + "'>");
