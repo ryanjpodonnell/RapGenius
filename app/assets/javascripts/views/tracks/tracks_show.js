@@ -6,6 +6,7 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
     "mouseup #lyrics": "getSelectionText",
     "mousedown .popover": "popoverClick",
     "click #submit": "submit",
+    "click #delete": "delete",
     "mousedown .annotation": "showAnnotation"
   },
   
@@ -114,6 +115,19 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
     });
   },
   
+  delete: function(event) {
+    var that = this;
+    var $el = $('.annotation-display');
+    var annotationId = parseInt($el.attr("data-annotation-id"));
+    var currentAnnotation = this.model.annotations().get(annotationId);
+    currentAnnotation.destroy({
+      success: function() {
+        $('.annotation-display').modal('hide');
+        that.placeAnnotations(-1, -1, "");
+      }
+    });
+  },
+  
   placeAnnotations: function(popStart, popEnd, text) {
     if (this._lyricsText) {
       var lyrics = this._lyricsText;
@@ -167,6 +181,8 @@ RapGenius.Views.TracksShow = Backbone.View.extend({
     var annotationId = event.currentTarget.dataset.annotationId;
     var annotation = this.model.annotations().get(annotationId);
     var annotationUrl = annotation.get("filepicker_url");
+    $('.annotation-display').attr("data-annotation-id", annotationId);
+    
     $('.annotation-display .modal-title').text(annotation.get("referent"));
     $('.annotation-display .modal-body').text(annotation.get("body"));
     $('.annotation-display .modal-body').append("<br><img id='annotation-pic' src='" + annotationUrl + "'>");

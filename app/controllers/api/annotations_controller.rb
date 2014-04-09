@@ -8,6 +8,12 @@ class Api::AnnotationsController < ApplicationController
     end
   end
   
+  def destroy
+    @annotation = Annotation.find(params[:id])
+    @annotation.destroy
+    render "annotations/show"
+  end
+  
   def show
     @annotation = Annotation.find(params[:id])
     render "annotations/show"
