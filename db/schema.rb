@@ -16,17 +16,6 @@ ActiveRecord::Schema.define(version: 20140327225013) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "albums", force: true do |t|
-    t.integer  "artist_id",    null: false
-    t.integer  "year",         null: false
-    t.string   "title",        null: false
-    t.date     "release_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "about"
-    t.string   "image_url"
-  end
-
   create_table "annotations", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
